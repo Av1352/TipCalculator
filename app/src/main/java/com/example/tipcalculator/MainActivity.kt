@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.calculateButton.setOnClickListener{ calculateTip() }
+        binding.calculate.setOnClickListener{ calculateTip() }
         //Toast.makeText(getApplicationContext(),"Dice Rolled!", Toast.LENGTH_SHORT).show();
 
     }
