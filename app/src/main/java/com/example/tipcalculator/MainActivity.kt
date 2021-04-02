@@ -1,9 +1,9 @@
 package com.example.tipcalculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.tipcalculator.databinding.ActivityMainBinding
-import java.text.NumberFormat
 import kotlin.math.ceil
 
 
@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity()
         //Toast.makeText(getApplicationContext(),"Dice Rolled!", Toast.LENGTH_SHORT).show();
 
     }
+    @SuppressLint("StringFormatMatches")
     private fun calculateTip() {
         val stringInTextField = binding.costOfService.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
@@ -34,12 +35,12 @@ class MainActivity : AppCompatActivity()
             else -> 0.15
         }
 
-        var tip = tipPercentage * cost
+        var tip: Number = tipPercentage * cost
         if (binding.roundUpSwitch.isChecked) {
-            tip = ceil(tip)
+            tip = ceil(tip as Double)
         }
 
-        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
-        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+
+        binding.tipResult.text = getString(R.string.tip_amount, tip)
     }
 }
